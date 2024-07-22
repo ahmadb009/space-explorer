@@ -18,7 +18,7 @@ const Astronauts = () => {
   return (
     <div className="astronauts">
       {astronauts.map((astronaut, index) => (
-        <Fade bottom key={index}>
+        <Fade key={index}>
           <div className="astronaut-card">
             <h3>{astronaut.name}</h3>
             <p>Craft: {astronaut.craft}</p>

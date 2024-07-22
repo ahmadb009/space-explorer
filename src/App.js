@@ -5,6 +5,7 @@ import Modal from './components/Modal';
 import { fetchPlanets } from './services/NasaService';
 import Astronauts from './components/Astronauts';
 import Missions from './components/Missions';
+import { Fade } from 'react-awesome-reveal';
 import './App.css';
 
 const App = () => {

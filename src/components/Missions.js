@@ -18,7 +18,7 @@ const Missions = () => {
   return (
     <div className="missions">
       {missions.map((mission, index) => (
-        <Fade bottom key={index}>
+        <Fade key={index}>
           <div className="mission-card">
             <h3>{mission.name}</h3>
             <p>Date: {new Date(mission.date_utc).toLocaleDateString()}</p>
@@ -29,3 +29,5 @@ const Missions = () => {
     </div>
   );
 };
+
+export default Missions;
