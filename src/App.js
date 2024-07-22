@@ -5,7 +5,6 @@ import Modal from './components/Modal';
 import { fetchPlanets } from './services/NasaService';
 import { fetchAstronauts } from './services/NasaService';
 import { fetchMissions } from './services/NasaService';
-import Fade from 'react-reveal/Fade';
 import './App.css';
 import Astronauts from './components/Astronauts';
 import Missions from './components/Missions';
