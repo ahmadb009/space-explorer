@@ -1,10 +1,9 @@
+// src/App.js
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Tabs from './components/Tabs';
 import Modal from './components/Modal';
 import { fetchPlanets } from './services/NasaService';
-import Astronauts from './components/Astronauts';
-import Missions from './components/Missions';
 import { Fade } from 'react-awesome-reveal';
 import './App.css';
 
@@ -44,16 +43,6 @@ const App = () => {
                 ))}
               </div>
             )
-          },
-          {
-            name: 'astronauts',
-            label: 'Astronauts',
-            content: <Astronauts />
-          },
-          {
-            name: 'missions',
-            label: 'Missions',
-            content: <Missions />
           }
         ]}
       />
