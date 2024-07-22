@@ -1,0 +1,26 @@
+.tabs {
+    margin: 20px;
+  }
+  
+  .tab-headers {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tab-headers button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .tab-headers .active {
+    border-bottom: 2px solid #000;
+  }
+  
+  .tab-content {
+    text-align: left;
+  }
+  

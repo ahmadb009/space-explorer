@@ -1,25 +1,63 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import Header from './components/Header';
+import Tabs from './components/Tabs';
+import Modal from './components/Modal';
+import { fetchPlanets } from './services/NasaService';
+import { Fade } from 'react-awesome-reveal';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [planets, setPlanets] = useState([]);
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  useEffect(() => {
+    const loadPlanets = async () => {
+      const data = await fetchPlanets();
+      if (Array.isArray(data)) {
+        setPlanets(data);
+      } else {
+        console.error("Unexpected response:", data);
+      }
+    };
+
+    loadPlanets();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Tabs
+        tabs={[
+          {
+            name: 'planets',
+            label: 'Planets',
+            content: (
+              <div className="planets">
+                {planets.map((planet, index) => (
+                  <Fade key={index}>
+                    <div className="planet-card">
+                      <h3>{planet.title}</h3>
+                      <p>{planet.explanation}</p>
+                      <button onClick={() => setSelectedPlanet(planet)}>Learn More</button>
+                    </div>
+                  </Fade>
+                ))}
+              </div>
+            )
+          }
+        ]}
+      />
+      <Modal show={selectedPlanet} onClose={() => setSelectedPlanet(null)}>
+        {selectedPlanet && (
+          <div className="planet-details">
+            <h2>{selectedPlanet.title}</h2>
+            <p>{selectedPlanet.explanation}</p>
+            <button onClick={() => setSelectedPlanet(null)}>Close</button>
+          </div>
+        )}
+      </Modal>
     </div>
   );
-}
+};
 
 export default App;
