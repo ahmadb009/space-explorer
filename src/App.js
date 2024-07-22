@@ -3,11 +3,9 @@ import Header from './components/Header';
 import Tabs from './components/Tabs';
 import Modal from './components/Modal';
 import { fetchPlanets } from './services/NasaService';
-import { fetchAstronauts } from './services/NasaService';
-import { fetchMissions } from './services/NasaService';
-import './App.css';
 import Astronauts from './components/Astronauts';
 import Missions from './components/Missions';
+import './App.css';
 
 const App = () => {
   const [planets, setPlanets] = useState([]);
@@ -33,7 +31,7 @@ const App = () => {
             content: (
               <div className="planets">
                 {planets.map((planet, index) => (
-                  <Fade bottom key={index}>
+                  <Fade key={index}>
                     <div
                       className="planet-card"
                       onClick={() => setSelectedPlanet(planet)}
