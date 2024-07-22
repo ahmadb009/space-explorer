@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = '8lxsm7c1552fFv71aAoMrTss9JaYFaD3PYWq0cHV';
+const NASA_PLANETS_URL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&count=5`;
 
 export const fetchPlanets = async () => {
     try {
