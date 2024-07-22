@@ -7,7 +7,7 @@ import { Fade } from 'react-awesome-reveal';
 import './App.css';
 
 const App = () => {
-  const [planets, setPlanets] = useState([]); // Ensure it's an empty array initially
+  const [planets, setPlanets] = useState([]);
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
@@ -35,12 +35,10 @@ const App = () => {
               <div className="planets">
                 {planets.map((planet, index) => (
                   <Fade key={index}>
-                    <div
-                      className="planet-card"
-                      onClick={() => setSelectedPlanet(planet)}
-                    >
+                    <div className="planet-card">
                       <h3>{planet.title}</h3>
                       <p>{planet.explanation}</p>
+                      <button onClick={() => setSelectedPlanet(planet)}>Learn More</button>
                     </div>
                   </Fade>
                 ))}
@@ -54,6 +52,7 @@ const App = () => {
           <div className="planet-details">
             <h2>{selectedPlanet.title}</h2>
             <p>{selectedPlanet.explanation}</p>
+            <button onClick={() => setSelectedPlanet(null)}>Close</button>
           </div>
         )}
       </Modal>
