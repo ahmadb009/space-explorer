@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Tabs from './components/Tabs';
@@ -8,13 +7,17 @@ import { Fade } from 'react-awesome-reveal';
 import './App.css';
 
 const App = () => {
-  const [planets, setPlanets] = useState([]);
+  const [planets, setPlanets] = useState([]); // Ensure it's an empty array initially
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
     const loadPlanets = async () => {
       const data = await fetchPlanets();
-      setPlanets(data);
+      if (Array.isArray(data)) {
+        setPlanets(data);
+      } else {
+        console.error("Unexpected response:", data);
+      }
     };
 
     loadPlanets();
